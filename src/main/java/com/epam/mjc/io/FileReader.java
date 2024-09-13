@@ -5,7 +5,7 @@ import java.io.File;
 
 public class FileReader {
 
-   public Profile getDataFromFile(File file) {
+    public Profile getDataFromFile(File file) {
         StringBuilder fileContent = new StringBuilder();
 
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
@@ -41,3 +41,4 @@ public class FileReader {
         return new Profile(name, age, email, phone);
     }
 }
+
