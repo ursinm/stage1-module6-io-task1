@@ -84,16 +84,15 @@ public class FileReaderTest {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    public static void createTestFile(String randomString, Integer randomInt) {
-        try {
-            FileUtils.writeStringToFile(new File(TEST_FILE.toUri()),
-                    "Name: " + randomString + System.lineSeparator() +
-                            "Age: "  + randomInt + System.lineSeparator() +
-                            "Email: " + randomString + System.lineSeparator() +
-                            "Phone: "  + randomInt + System.lineSeparator(),
-                    "UTF-8");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+   public static void createTestFile(String randomString, Integer randomInt) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(TEST_FILE.toFile()))) {
+        writer.write("Name: " + randomString + System.lineSeparator());
+        writer.write("Age: " + randomInt + System.lineSeparator());
+        writer.write("Email: " + randomString + System.lineSeparator());
+        writer.write("Phone: " + randomInt + System.lineSeparator());
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+}
     }
 }
