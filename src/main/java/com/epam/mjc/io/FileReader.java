@@ -1,7 +1,7 @@
 package com.epam.mjc.io;
 
 import java.io.File;
-
+import java.io.*;
 
 public class FileReader {
 
